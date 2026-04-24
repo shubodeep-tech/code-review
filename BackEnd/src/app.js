@@ -1,10 +1,15 @@
+
 const express = require('express');
+const aiRoutes = require('./routes/ai.routes');
 
-const app = express()
+const app = express();
 
-app.use("/",(req,res) =>{
-    res.send('Hello World')
+app.use(express.json());
 
-})
+app.get("/", (req, res) => {
+    res.send('Hello World');
+});
 
-module.exports  = app;
+app.use("/ai", aiRoutes);
+
+module.exports = app;
