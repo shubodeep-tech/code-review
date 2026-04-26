@@ -1,18 +1,9 @@
 import { useState } from 'react'
-import Prism from "prismjs"
-import "prismjs/components/prism-clike"
-import "prismjs/components/prism-javascript"
-import "prismjs/themes/prism-tomorrow.css"
+import Editor from "@monaco-editor/react"
 
-
-import Editor from "react-simple-code-editor"
-
-const CodeEditor = Editor.default || Editor
-
-import { default as ReactMarkdown } from "react-markdown"
+import ReactMarkdown from "react-markdown"
 import rehypeHighlight from "rehype-highlight"
 import "highlight.js/styles/github-dark.css"
-
 
 import axios from 'axios'
 import './App.css'
@@ -22,6 +13,8 @@ function App() {
   return 1 + 1;
 }`)
 
+  const [language, setLanguage] = useState("javascript") // ✅ ADD THIS
+
   const [review, setReview] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -29,70 +22,74 @@ function App() {
     try {
       setLoading(true)
 
-      const response = await axios.post(
+      const res = await axios.post(
         'http://localhost:3000/ai/get-review',
         { code }
       )
 
-      console.log("API:", response.data)
-
-      setReview(
-        typeof response.data === "string"
-          ? response.data
-          : JSON.stringify(response.data)
-      )
+      setReview(res.data)
 
     } catch (err) {
       console.error(err)
-      setReview("Error fetching review")
+      setReview("⚠️ AI server busy. Try again.")
     } finally {
       setLoading(false)
     }
   }
 
-  console.log("Editor:", Editor)
-  console.log("ReactMarkdown:", ReactMarkdown)
-
   return (
     <main>
+
       <div className="left">
+
+       
+        <select
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+          style={{
+            margin: "10px",
+            padding: "5px",
+            borderRadius: "5px"
+          }}
+        >
+          <option value="javascript">JavaScript</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="cpp">C++</option>
+        </select>
+
         <div className="code">
-          <CodeEditor
+          <Editor
+            height="100%"
+            language={language}
             value={code}
-            onValueChange={setCode}
-            highlight={(code) =>
-              Prism.highlight(code, Prism.languages.javascript, "javascript")
-            }
-            padding={10}
-            style={{
-              fontFamily: '"Fira Code", monospace',
-              fontSize: 16,
-              height: "100%",
-              width: "100%",
-              backgroundColor: "#0c0c0c",
-              color: "white"
-            }}
+            onChange={(value) => setCode(value || "")}
+            theme="vs-dark"
           />
         </div>
 
-        <div onClick={reviewCode} className="review">
-          {loading ? "Analyzing..." : "Review"}
-        </div>
-      </div>
+          <button onClick={reviewCode} className="review">
+         {loading ? "Analyzing..." : "Review"}
+       </button>
+
+     </div>
 
       <div className="right">
-        {review ? (
-          <ReactMarkdown
-
-          rehypePlugins={[rehypeHighlight]}
-
-
-          >{review}
-          </ReactMarkdown>
+        {loading ? (
+          <p style={{ color: "white" }}>🔍 Analyzing...</p>
+        ) : review ? (
+          <div className="markdown-body">
+            <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+           {review}
+        </ReactMarkdown>
+        </div>
         ) : (
-          <p style={{ color: "white" }}>Click "Review" to analyze code</p>
+          <p style={{ color: "white" }}>
+            Click Review to analyze code
+          </p>
         )}
       </div>
+
     </main>
   )
 }
