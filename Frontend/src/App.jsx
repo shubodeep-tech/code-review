@@ -31,7 +31,7 @@ function App() {
 
     } catch (err) {
       console.error(err)
-      setReview("⚠️ AI server busy. Try again.")
+      setReview(" AI server busy. Try again.")
     } finally {
       setLoading(false)
     }
@@ -76,7 +76,7 @@ function App() {
 
       <div className="right">
         {loading ? (
-          <p style={{ color: "white" }}>🔍 Analyzing...</p>
+          <p style={{ color: "white" }}> Analyzing..</p>
         ) : review ? (
           <div className="markdown-body">
             <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
