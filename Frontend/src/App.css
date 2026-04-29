@@ -1,4 +1,4 @@
-/* RESET */
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +10,6 @@ html, body, #root {
   width: 100%;
 }
 
-/* MAIN LAYOUT */
 main {
   height: 100%;
   width: 100%;
@@ -19,7 +18,7 @@ main {
   gap: 1rem;
 }
 
-/* PANELS */
+
 main .left,
 main .right {
   height: 100%;
@@ -27,7 +26,6 @@ main .right {
   border-radius: 0.7rem;
 }
 
-/* LEFT PANEL */
 main .left {
   background-color: #000;
   position: relative;
@@ -44,7 +42,7 @@ main .left {
   border-radius: 0.7rem;
 }
 
-/* 🔥 IMPORTANT FIXES FOR EDITOR */
+
 .code textarea {
   outline: none;
   border: none;
@@ -85,14 +83,14 @@ main .right {
   overflow-y: auto;
 }
 
-/* MARKDOWN CONTAINER */
+
 .markdown-body {
   color: #e5e5e5;
   font-size: 15px;
   line-height: 1.7;
 }
 
-/* HEADINGS */
+
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3 {
@@ -101,20 +99,19 @@ main .right {
   font-weight: 600;
 }
 
-/* SECTION COLORS (WORKING WAY) */
 .markdown-body h3:nth-of-type(1) {
-  color: #ff6b6b; /* Issues */
+  color: #ff6b6b; 
 }
 
 .markdown-body h3:nth-of-type(2) {
-  color: #ffd166; /* Improvements */
+  color: #ffd166; 
 }
 
 .markdown-body h3:nth-of-type(3) {
-  color: #06d6a0; /* Code */
+  color: #06d6a0; 
 }
 
-/* LISTS */
+
 .markdown-body ul {
   padding-left: 1.5rem;
   margin-bottom: 1rem;
@@ -124,7 +121,7 @@ main .right {
   margin-bottom: 0.4rem;
 }
 
-/* CODE BLOCK */
+
 .markdown-body pre {
   background: #0c0c0c;
   border: 1px solid #333;
@@ -134,7 +131,7 @@ main .right {
   margin: 1rem 0;
 }
 
-/* INLINE CODE */
+
 .markdown-body code {
   background: #2a2a2a;
   padding: 3px 6px;

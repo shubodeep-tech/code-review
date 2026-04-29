@@ -13,7 +13,7 @@ function App() {
   return 1 + 1;
 }`)
 
-  const [language, setLanguage] = useState("javascript") // ✅ ADD THIS
+  const [language, setLanguage] = useState("javascript") 
 
   const [review, setReview] = useState("")
   const [loading, setLoading] = useState(false)
