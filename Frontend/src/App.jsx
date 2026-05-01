@@ -23,7 +23,7 @@ function App() {
       setLoading(true)
 
       const res = await axios.post(
-        'http://localhost:3000/ai/get-review',
+        'https://code-review-oith.onrender.com',
         { code }
       )
 
