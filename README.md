@@ -14,7 +14,7 @@ ReviewAI is a full-stack AI-powered code review platform that analyzes code usin
   REST API-based architecture  
  
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
  React.js  
