@@ -12,6 +12,12 @@ ReviewAI is a full-stack AI-powered code review platform that analyzes code usin
    Supports multiple programming languages  
    Structured feedback (errors, improvements, optimizations)  
   REST API-based architecture  
+
+ Preview :
+<img width="1426" height="1103" alt="Ai code reveiwerr Screehot" src="https://github.com/user-attachments/assets/d7df1891-18a1-47f0-a20a-160ee5d5f63c" />
+
+
+
  
 
 ##  Tech Stack
