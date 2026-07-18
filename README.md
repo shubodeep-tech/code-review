@@ -1,4 +1,3 @@
- ReviewAI — AI-Powered Code Reviewer for GitHub
 
 ReviewAI is a full-stack AI-powered code review platform that analyzes code using LLMs and provides real-time feedback, suggestions, and improvements for better code quality and performance.
 
